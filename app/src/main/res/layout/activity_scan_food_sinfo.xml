@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGrey"
+    tools:context="com.gd.guandou.guandou.activity.ScanFoodSInfoActivity">
+
+    <ScrollView android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="50dp"
+                android:scrollbars="none">
+
+    <LinearLayout  android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:orientation="vertical">
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="50dp"
+                      android:background="@color/colorblue"
+                      android:gravity="center"
+                      android:orientation="vertical">
+
+            <!--<ImageView-->
+                <!--android:id="@+id/iv_scanfoods_photo"-->
+                <!--android:layout_width="80dp"-->
+                <!--android:layout_height="80dp"-->
+                <!--android:scaleType="centerInside"-->
+                <!--android:src="@mipmap/goodsphoto"-->
+            <!--/>-->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:lines="1"
+                android:text="待支付交易详情"
+                android:textColor="@color/colorwhite"
+                android:textSize="@dimen/text_title"/>
+
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="180dp"
+                  android:background="@color/colorwhite"
+                  android:orientation="vertical"
+                  android:paddingTop="10dp">
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="40dp"
+                          android:background="@color/colorwhite"
+                          android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:lines="1"
+                    android:paddingLeft="20dp"
+                    android:text="商品名称 :"
+                    android:textColor="@color/colorblack"
+                    android:textSize="@dimen/text_title"/>
+
+                <TextView
+                    android:id="@+id/tv_scanfoods_goodsname"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:lines="1"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="20dp"
+                    android:text="..."
+                    android:textColor="@color/colorblack"
+                    android:textSize="@dimen/text_title"/>
+
+            </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="40dp"
+                      android:background="@color/colorwhite"
+                      android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:lines="1"
+                android:paddingLeft="20dp"
+                android:text="订单号 :"
+                android:textColor="@color/colorblack"
+                android:textSize="@dimen/text_title"/>
+
+            <TextView
+                android:id="@+id/tv_scanfoods_ordernum"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:lines="1"
+                android:paddingLeft="10dp"
+                android:paddingRight="20dp"
+                android:text="..."
+                android:textColor="@color/colorblack"
+                android:textSize="@dimen/text_title"/>
+
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="40dp"
+                      android:background="@color/colorwhite"
+                      android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:lines="1"
+                android:paddingLeft="20dp"
+                android:text="价格 :"
+                android:textColor="@color/colorblack"
+                android:textSize="@dimen/text_title"/>
+
+            <TextView
+                android:id="@+id/tv_scanfoods_goodsprice"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:lines="1"
+                android:paddingLeft="10dp"
+                android:paddingRight="20dp"
+                android:text="..."
+                android:textColor="@color/colorblack"
+                android:textSize="@dimen/text_title"/>
+
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="40dp"
+                      android:background="@color/colorwhite"
+                      android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:lines="1"
+                android:paddingLeft="20dp"
+                android:text="日期 :"
+                android:textColor="@color/colorblack"
+                android:textSize="@dimen/text_title"/>
+
+            <TextView
+                android:id="@+id/tv_scanfoods_orderdate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:lines="1"
+                android:paddingLeft="10dp"
+                android:paddingRight="20dp"
+                android:text="..."
+                android:textColor="@color/colorblack"
+                android:textSize="@dimen/text_title"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/et_scanfoods_paymm"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:paddingLeft="10dp"
+        android:textSize="@dimen/text_content"
+        android:textColor="@color/colorblack"
+        android:maxLength="6"
+        android:focusable="true"
+        android:inputType="numberPassword"
+        android:hint="请输入支付密码(6位数字的密码)"
+        android:textColorHint="@color/colorGrey"
+        android:background="@color/colorwhite"
+        android:layout_marginTop="40dp"/>
+
+    </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_scanfoods_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorwhite"
+            android:text="取消"
+            android:onClick="onClick"
+            android:textColor="@color/colorblue"
+            android:textSize="20sp"/>
+
+
+        <Button
+            android:id="@+id/btn_scanfoods_pay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colororange"
+            android:layout_weight="1"
+            android:text="付款"
+            android:onClick="onClick"
+            android:textColor="@color/colorwhite"
+            android:textSize="20sp" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>贯豆支付</title>
+    <script src="../js/mui.min.js"></script>
+    <script src="../js/base.js"></script>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+	<script src="https://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+</head>
+<body>
+	<div class="mui-content max-width">
+		<header class="user-wrap">
+				<div class="user-box">
+					<div class="edi"><i class="icons ion-ios-compose-outline"></i></div>
+					<div class="protarit">
+						<img src="../images/protarit.jpg"  alt="头像"/>
+						<p class="user-txt">UserName</p>
+					</div>
+				</div>
+				<ul class="mui-row">
+					<li class="mui-col-sm-6 mui-col-xs-6 on"><a href="javascript:;">贯豆钱包</a></li>
+					<li class="mui-col-sm-6 mui-col-xs-6"><a href="record.html">消费记录</a></li>
+				</ul>
+		</header>
+		<section class="account">
+			<div class="w">
+				<div class="tit">
+					<span>账户余额</span><i class="icons ion-ios-eye-outline"></i>
+				</div>
+				<ul class="account-box mui-row">
+					<li class="mui-col-sm-6 mui-col-xs-6">
+						<span>剩余贯豆</span>
+						<p class="gd-number">--</p>
+					</li>
+					<li class="mui-col-sm-6 mui-col-xs-6">
+						<span>剩余积分</span>
+						<p class="point-txt">--</p>
+					</li>					
+				</ul>
+			</div>
+		</section>
+		<section class="index_main">
+			<div class="w">
+				<nav class="tool-nav">
+					<ul>
+						<li id="ts">
+						
+								<img src="../images/tool01.png"  />
+								<span>扫码</span>
+							
+						</li>
+						<li>
+							<a href="javascripr:;">
+								<img src="../images/tool02.png"  />
+								<span>支付</span>
+							</a>
+						</li>
+						<li>
+							<a href="javascripr:;">
+								<img src="../images/tool03.png"  />
+								<span>转赠</span>
+							</a>
+						</li>
+						<li>
+							<a href="javascripr:;">
+								<img src="../images/tool04.png"  />
+								<span>充值</span>
+							</a>
+						</li>					
+					</ul>
+				</nav>
+				<div class="game-wrap">
+					<div class="tit"><span>贯豆游戏</span></div>
+					<ul class="mui-row">
+						<li class="mui-col-sm-6 mui-col-xs-6"><a href="game_farm.html"><img src="../images/game01.jpg" /></a></li>
+						<li class="mui-col-sm-6 mui-col-xs-6"><a href="game_piece.html"><img src="../images/game02.jpg" /></a></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+	</div>	
+	<nav class="mui-bar mui-bar-tab index-bar">  
+            <div class="mui-tab-item mui-active">
+            	<a href="javascript:;">
+                <span class="icons ion-android-home"></span>  
+                <span class="mui-tab-label">首页</span>  
+                </a>
+            </div>  
+            <div class="mui-tab-item">
+            	<a href="javascript:;">
+	                <span class="icons ion-person-stalker"></span>  
+	                <span class="mui-tab-label">朋友</span>  
+                </a>
+            </div>                
+             <div class="mui-tab-item">
+            	<a href="deal.html">
+	                <span class="ion-ios-pulse-strong icons"></span>  
+	                <span class="mui-tab-label">贯豆指数</span>  
+                </a>
+            </div>            
+            <div class="mui-tab-item">
+            	<a href="treasure.html">
+	                <span class="icons ion-bag"></span>  
+	                <span class="mui-tab-label">我的财富</span>  
+                </a>
+            </div>         
+      </nav>
+         <script>mui('body').on('tap','a',function(){document.location.href=this.href;});</script>
+         <script>
+         	$(function(){
+         		var info =JSON.parse(localStorage.getItem("login"));
+				var token ={"accessToken":info.data.accessToken};
+				$.ajax({
+					url:"http://gzpandie.mynetgear.com:81/GuanDou/app/getUserInfo.do",
+					type:"POST",
+					dataType:"json",
+					data: JSON.stringify(token),
+					contentType:"application/json",
+					async: false,
+					global:false,
+					success:function(result){
+						$(".user-txt").text(result.data.username);
+						var us = JSON.stringify(result);
+						us = localStorage.setItem("us",us);
+					},
+					error: function(){
+						mui.toast("网络错误，请稍后再重试");
+					}
+				})
+				$.ajax({
+					url:"http://gzpandie.mynetgear.com:81/GuanDou/app/getPointsInfo.do",
+					type:"POST",
+					dataType:"json",
+					data: JSON.stringify(token),
+					contentType:"application/json",
+					global:false,
+					success:function(jf){
+						$(".point-txt").text(jf.data.point_count);
+					},
+					error: function(){
+						mui.toast("网络错误，请稍后再重试");
+					}					
+				})
+				$.ajax({
+					type:"POST",
+					dataType:"json",
+					url:"http://gzpandie.mynetgear.com:81/GuanDou/user/getbeansInfo.do",
+					data:JSON.stringify(token),
+					contentType:"application/json",
+					success:function(result){
+						if(result.success){
+							$(".gd-number").text(result.data.gdnumber);
+						}
+					},
+					error: function(){
+						mui.toast("网络错误，请稍后再重试");
+					}					
+				});
+				$("#ts").click(function(){
+					console.log(token.accessToken);
+				})
+         	})
+         </script>
+</body>
+</html>

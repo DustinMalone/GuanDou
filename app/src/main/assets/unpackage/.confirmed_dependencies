@@ -1,0 +1,238 @@
+{
+	"index.html": {
+		"resources": [
+			"images/tool02.png",
+			"images/tool01.png",
+			"js/base.js",
+			"images/game02.jpg",
+			"images/tool03.png",
+			"js/mui.min.js",
+			"images/header_bg.jpg",
+			"css/mui.min.css",
+			"css/style.css",
+			"images/protarit.jpg",
+			"images/game01.jpg",
+			"images/tool04.png",
+			"game_farm.html",
+			"deal.html"
+		],
+		"refer": [
+			"game_farm.html",
+			"deal.html"
+		]
+	},
+	"game_farm.html": {
+		"resources": [
+			"images/farm_foot.png",
+			"images/farm_main.png",
+			"images/reap.png",
+			"images/fertilizer.png",
+			"images/farm_head.png",
+			"images/dous.png",
+			"images/un.png",
+			"images/back.png",
+			"images/mu_bg.png",
+			"images/shop_icon.png",
+			"images/speed.png",
+			"images/di.png",
+			"js/farm.js",
+			"images/plus.png",
+			"images/water.png",
+			"images/water_action.gif",
+			"images/fertilizer_action.gif",
+			"css/style.css",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"index.html",
+			"images/big_bg.jpg",
+			"images/farm_heads.png",
+			"images/man.png",
+			"images/house.jpg"
+		],
+		"refer": [
+			"index.html"
+		]
+	},
+	"deal.html": {
+		"resources": [
+			"images/deal.jpg",
+			"images/head_bg.jpg",
+			"treasure.html",
+			"index.html"
+		],
+		"refer": [
+			"treasure.html"
+		]
+	},
+	"treasure.html": {
+		"resources": [
+			"images/zc03.png",
+			"images/zc01.png",
+			"fonts/mui.ttf",
+			"images/zc02.png",
+			"images/zc04.png",
+			"js/mui.min.js",
+			"images/header_bg.jpg",
+			"css/mui.min.css",
+			"css/style.css",
+			"images/protarit.jpg",
+			"index.html"
+		],
+		"refer": []
+	},
+	"login.html": {
+		"resources": [
+			"images/lg_bg.jpg",
+			"js/plus.webview.animation.js",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"css/style.css",
+			"js/common.js",
+			"pages/index.html",
+			"images/logo.jpg"
+		],
+		"refer": [
+			"index.html",
+			"pages/index.html",
+			"pages/treasure.html"
+		]
+	},
+	"pages/index.html": {
+		"resources": [
+			"js/base.js",
+			"js/mui.min.js",
+			"images/header_bg.jpg",
+			"css/mui.min.css",
+			"css/style.css",
+			"images/tool02.png",
+			"images/tool01.png",
+			"images/tool03.png",
+			"images/protarit.jpg",
+			"images/game01.jpg",
+			"images/tool04.png",
+			"images/game02.jpg",
+			"js/common.js",
+			"js/plus.webview.animation.js",
+			"pages/game_farm.html",
+			"pages/treasure.html",
+			"pages/deal.html",
+			"pages/game_piece.html"
+		],
+		"refer": [
+			"pages/record.html",
+			"pages/game_piece.html",
+			"pages/game_farm.html",
+			"pages/deal.html"
+		]
+	},
+	"pages/record.html": {
+		"resources": [
+			"images/record02.jpg",
+			"images/record06.jpg",
+			"images/record01.jpg",
+			"fonts/mui.ttf",
+			"images/record03.jpg",
+			"images/record05.jpg",
+			"images/head_bg.jpg",
+			"images/record04.jpg",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"css/style.css"
+		],
+		"refer": [
+			"pages/index.html"
+		]
+	},
+	"pages/game_farm.html": {
+		"resources": [
+			"images/farm_foot.png",
+			"images/farm_heads.png",
+			"images/man.png",
+			"images/house.jpg",
+			"pages/index.html",
+			"images/farm_main.png",
+			"images/reap.png",
+			"images/fertilizer.png",
+			"images/dous.png",
+			"images/un.png",
+			"images/back.png",
+			"images/mu_bg.png",
+			"images/shop_icon.png",
+			"images/speed.png",
+			"images/di.png",
+			"js/farm.js",
+			"images/plus.png",
+			"images/water.png",
+			"css/style.css",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"images/reap_action.gif",
+			"images/fertilizer_action.gif",
+			"images/shop.png",
+			"images/dou_young.png",
+			"images/fertilizer_di.png",
+			"images/full_di.png",
+			"images/water_di.png",
+			"images/water_action.gif",
+			"images/bbg.png",
+			"images/dou_ripe.png",
+			"images/dou_grow.png"
+		],
+		"refer": [
+			"pages/index.html",
+			"pages/get_farm.html"
+		]
+	},
+	"pages/treasure.html": {
+		"resources": [
+			"images/zc03.png",
+			"images/zc01.png",
+			"fonts/mui.ttf",
+			"images/zc02.png",
+			"images/zc04.png",
+			"login.html",
+			"js/common.js",
+			"js/plus.webview.animation.js",
+			"js/mui.min.js",
+			"images/header_bg.jpg",
+			"css/mui.min.css",
+			"css/style.css",
+			"images/protarit.jpg",
+			"pages/index.html"
+		],
+		"refer": [
+			"pages/deal.html"
+		]
+	},
+	"pages/deal.html": {
+		"resources": [
+			"images/deal.jpg",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"css/style.css",
+			"images/head_bg.jpg",
+			"pages/treasure.html",
+			"pages/index.html"
+		],
+		"refer": [
+			"pages/index.html"
+		]
+	},
+	"pages/game_piece.html": {
+		"resources": [
+			"images/back_t.png",
+			"images/seek.png",
+			"images/piece_bg.jpg",
+			"images/hide.png",
+			"pages/index.html"
+		],
+		"refer": [
+			"pages/index.html"
+		]
+	},
+	"pages/get_farm.html": {
+		"refer": [
+			"pages/game_farm.html"
+		]
+	}
+}

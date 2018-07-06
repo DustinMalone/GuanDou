@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGrey"
+    android:orientation="vertical"
+    tools:context="com.gd.guandou.guandou.activity.PurchaseHistoryActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:background="@mipmap/head_bg">
+
+        <ImageView
+            android:id="@+id/iv_purchase_history_back"
+            android:layout_marginLeft="20dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:onClick="onClick"
+            android:clickable="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/back_t"/>
+
+        <TextView
+            android:id="@+id/tv_purchase_history_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:text="收支明细"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_title"/>
+
+        <!--<TextView-->
+            <!--android:layout_width="25dp"-->
+            <!--android:layout_height="25dp"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_alignParentEnd="true"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:layout_marginEnd="20dp"-->
+            <!--android:text="..."-->
+            <!--android:textColor="@android:color/white"-->
+            <!--android:textSize="@dimen/text_title"/>-->
+
+    </RelativeLayout>
+
+    <com.gd.guandou.guandou.view.UpPullRefreshLayout
+        android:id="@+id/swrl_refresh"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+    >
+
+    <com.gd.guandou.guandou.view.PinnedSectionListView
+        android:id="@+id/lv_purchase_history_bill"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+    />
+
+    </com.gd.guandou.guandou.view.UpPullRefreshLayout>
+</LinearLayout>

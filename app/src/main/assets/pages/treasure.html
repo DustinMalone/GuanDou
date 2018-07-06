@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="../js/mui.min.js"></script>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+	<script src="https://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+</head>
+<body class="bgccc">
+	<div class="mui-content max-width ">
+		<header class="treasure-head">
+			<div class="tt">我的财富</div>
+			<section class="w">
+				<div class="mui-table-view-cell diy-cell">
+					<a class="mui-navigate-right">
+					<img src="../images/protarit.jpg"  /><span class="usn">武老大</span>
+					</a>
+				</div>
+			</section>
+		</header>
+		<section class="treasure-nav">
+			<div class="itme-bg">
+				<div class="mui-table-view-cell diy-cell">
+					<a class="mui-navigate-right">
+						<img src="../images/zc01.png" class="vm" /><span class="vm">总资产</span>
+					</a>
+				</div>
+			</div>	
+			<div class="itme-bg">
+				<div class="mui-table-view-cell diy-cell">
+						<img src="../images/zc02.png" class="vm" /><span class="vm">余额</span><span class="ye">100.00</span></i>
+				</div>	
+				<div class="mui-table-view-cell diy-cell">
+					<a class="mui-navigate-right">
+						<img src="../images/zc03.png" class="vm" /><span class="vm">消费记录</span>
+					</a>
+				</div>
+				<div class="h"></div>
+			</div>	
+			<div class="itme-bg">
+				<div class="mui-table-view-cell diy-cell">
+					<a class="mui-navigate-right">
+						<img src="../images/zc04.png" class="vm" /><span class="vm">安全设置</span>
+					</a>
+				</div>
+				<div class="h"></div>
+			</div>	
+			<a href="../login.html" class="exit-lg">退出登录</a>
+		</section>
+	</div>	
+	<nav class="mui-bar mui-bar-tab index-bar">  
+            <div class="mui-tab-item">
+            	<a href="index.html">
+                <span class="icons ion-android-home"></span>  
+                <span class="mui-tab-label">首页</span>  
+                </a>
+            </div>  
+            <div class="mui-tab-item">
+            	<a href="javascript:;">
+	                <span class="icons ion-person-stalker"></span>  
+	                <span class="mui-tab-label">朋友</span>  
+                </a>
+            </div>                
+             <div class="mui-tab-item">
+            	<a href="deal.html">
+	                <span class="ion-ios-pulse-strong icons"></span>  
+	                <span class="mui-tab-label">贯豆指数</span>  
+                </a>
+            </div>            
+            <div class="mui-tab-item mui-active">
+            	<a href="treasure.html">
+	                <span class="icons ion-bag"></span>  
+	                <span class="mui-tab-label">我的财富</span>  
+                </a>
+            </div>         
+      </nav>
+      <script>mui('body').on('tap','a',function(){document.location.href=this.href;});</script>
+      <script>
+  		$(function(){
+  			var info =JSON.parse(localStorage.getItem("us"));
+  			console.log(info)
+  			
+  			$(".usn").text(info.data.username);
+  		})
+      </script>
+</body>
+</html>

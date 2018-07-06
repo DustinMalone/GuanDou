@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+    <script src="https://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+</head>
+<body>
+	<section class="login-wrap">
+		<div class="max-width">
+			<div class="w">
+			<div class="logo"><img src="images/logo.jpg" /></div>
+			<div class="lg-form">
+				<form action="#">
+					<div class="lg-tsy">
+						<div class="ip-icon-box">
+							<i class="icons ion-ios-person-outline"></i>
+							<input type="text" placeholder="请输入帐号" id="userName" />
+						</div>
+						<div class="ip-icon-box">
+							<i class="ion-ios-locked-outline icons"></i>
+							<input type="password" class="mui-input-password" placeholder="请输入密码" id="userPsw" />
+						</div>
+					</div>
+					<button type="button" class="lg-but"  id="loginBtn">登录</button>
+				</form>
+			</div>
+			<div class="link-box">
+				<a href="javascript:;" class="goreg" id="goreg">注册</a>
+				<a href="javascript:;" class="fg-psw" id="gopsw">忘记密码</a>
+			</div>
+			<div class='backbut' id='rmfs'>返回登陆</div>
+		</div>
+	</section>
+	    <script>mui('body').on('tap','a',function(){document.location.href=this.href;});</script>
+	    <script type="text/javascript" charset="utf-8">
+			 //mui初始化
+			mui.init({
+				swipeBack: true //启用右滑关闭功能
+			});
+
+			$(function(){
+				mui(".link-box").on("tap","a",function(thisId,src){
+					thisId = $(this).attr("id");
+					if(thisId =="goreg"){
+						src = "http://120.77.174.176/web_test/public/index.php/wap/passport-goregister.html";
+					}else{
+						src = "http://120.77.174.176/web_test/public/index.php/wap/passport-gofindpwd.html";
+					}					
+					var doc = window.document;
+					var  ifr = doc.createElement("div");
+					ifr.className = "regfs"
+					doc.body.appendChild(ifr);	
+					$(".regfs").append("<iframe src='"+src+"'  width='100%' height='75%' border='none'></iframe>");
+					$("#rmfs").show(500);
+					// 返回登陆
+					document.getElementById("rmfs").addEventListener("tap",function(){
+						$(".regfs").fadeOut(300,function(){
+							$(this).remove();
+							$("#rmfs").hide(100);
+						});
+					});
+				});				
+			})
+
+
+		$(function(){
+			document.getElementById("loginBtn").addEventListener('tap', function() {
+				var  userName =  $("#userName").val();
+				var userPsw = $("#userPsw").val();
+				var oJson ={"account":userName,"password":userPsw};
+				$.ajax({
+					url:"http://gzpandie.mynetgear.com:81/GuanDou/app/applogin.do",
+					type:"POST",
+					dataType:"json",
+					data: JSON.stringify(oJson),  
+					contentType:"application/json",
+					success:function(result){
+						mui.toast(result.message);
+					//	console.log(result.data.user_id);
+						if(result.success == true){
+							result = JSON.stringify(result)
+		    				localStorage.setItem("login", result);	
+							window.location.href = "pages/index.html"
+						}
+					},
+					error: function(){
+						mui.toast("网络错误，请稍后再重试");
+					}
+				})
+			})
+		})
+
+	
+
+
+		</script>
+</body>
+</html>

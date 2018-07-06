@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorGrey"
+    tools:context="com.gd.guandou.guandou.activity.GameTreasureDetailActivity">
+
+    <RelativeLayout
+        android:layout_alignParentStart="true"
+        android:id="@+id/rl_game_treasure_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:background="@mipmap/head_bg">
+
+        <ImageView
+            android:id="@+id/iv_game_treasure_detail_back"
+            android:layout_marginLeft="20dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:onClick="onClick"
+            android:clickable="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/back_t"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:text="明细"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_title"/>
+
+
+    </RelativeLayout>
+
+
+    <com.gd.guandou.guandou.xListview.XListView
+        android:id="@+id/xlv_game_treasure_detail_xlist"
+        android:layout_below="@id/tv_game_treasure_dayrecords"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+    />
+
+</LinearLayout>

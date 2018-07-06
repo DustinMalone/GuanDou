@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="../js/mui.min.js"></script>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+	<div class="mui-content max-width">
+		<div class="piece_bg">
+			<a href="index.html" class="back"><img src="../images/back_t.png" /></a>
+			<div class="piece-box  flex-box">
+				<div class="hide-box"><img src="../images/hide.png" /></div>
+				<div class="seek-box"><img src="../images/seek.png" /></div>
+			</div>
+		</div>
+	</div>	
+	<script>mui('body').on('tap','a',function(){document.location.href=this.href;});</script>
+</body>
+</html>

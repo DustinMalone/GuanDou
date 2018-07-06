@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>贯豆价值指数</title>
+    <script src="../js/mui.min.js"></script>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+	<div class="mui-content max-width bgfff">
+		<header class="deal-tt">
+			<h1>贯豆价值指数</h1>
+		</header>
+		<section class="deal-header">
+			<div class="w">
+				<div class="tit">
+					<span>当前价值</span>
+				</div>
+				<div class="txt-box">
+					<p>0.012895</p>
+					<span class="fsx">积分每贯豆</span>
+				</div>
+				<ul class="dh-nav">
+					<li>
+						<p>4.126</p>
+						<p>持有贯豆</p>
+					</li>
+					<li>
+						<p>贯豆交易</p>
+					</li>					
+				</ul>
+			</div>
+		</section>
+		<section class="real-time w">
+			<div class="t">实时指数</div>
+			<div class="real-img">
+				<img src="../images/deal.jpg"  />
+			</div>
+			
+			<ul class="real-tab">
+				<li class="on">分钟线</li>
+				<li>小时线</li>
+				<li>日线</li>
+				<li>周线</li>
+			</ul>
+		</section>
+	</div>	
+	<nav class="mui-bar mui-bar-tab index-bar">  
+            <div class="mui-tab-item">
+            	<a href="index.html">
+                <span class="icons ion-android-home"></span>  
+                <span class="mui-tab-label">首页</span>  
+                </a>
+            </div>  
+            <div class="mui-tab-item">
+            	<a href="javascript:;">
+	                <span class="icons ion-person-stalker"></span>  
+	                <span class="mui-tab-label">朋友</span>  
+                </a>
+            </div>                
+             <div class="mui-tab-item mui-active">
+            	<a href="deal.html">
+	                <span class="ion-ios-pulse-strong icons"></span>  
+	                <span class="mui-tab-label">贯豆指数</span>  
+                </a>
+            </div>            
+            <div class="mui-tab-item">
+            	<a href="treasure.html">
+	                <span class="icons ion-bag"></span>  
+	                <span class="mui-tab-label">我的财富</span>  
+                </a>
+            </div>         
+      </nav>
+        <script>mui('body').on('tap','a',function(){document.location.href=this.href;});</script>
+
+</body>
+</html>

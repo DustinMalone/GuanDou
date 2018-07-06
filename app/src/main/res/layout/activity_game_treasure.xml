@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGrey"
+    android:orientation="vertical"
+    tools:context="com.gd.guandou.guandou.activity.GameTreasureActivity">
+
+    <RelativeLayout
+        android:layout_alignParentStart="true"
+        android:id="@+id/rl_game_treasure_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:background="@mipmap/head_bg">
+
+        <ImageView
+            android:id="@+id/iv_game_treasure_back"
+            android:layout_marginLeft="20dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:onClick="onClick"
+            android:clickable="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/back_t"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:text="藏宝"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_title"/>
+
+        <TextView
+            android:id="@+id/tv_game_treasure_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:gravity="center"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="20dp"
+            android:onClick="onClick"
+            android:text="明细"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_content"/>
+
+
+    </RelativeLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/rl_game_treasure_content"
+        android:layout_below="@id/rl_game_treasure_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@color/color_light_blue"
+        android:orientation="vertical">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="累计收益贝母 "
+                android:textSize="@dimen/text_content"
+            />
+            <TextView
+                android:layout_gravity="center"
+                android:id="@+id/tv_game_treasure_sumjf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="..."
+                android:textSize="@dimen/text_content"
+            />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="昨日收益"
+            android:layout_marginRight="5dp"
+            android:textSize="@dimen/text_content"/>
+        <TextView
+            android:id="@+id/tv_game_treasure_yjf"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="..."
+            android:layout_marginRight="5dp"
+            android:textSize="@dimen/text_content"/>
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="贝母"
+            android:textSize="@dimen/text_content"
+        />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="藏宝贯豆"
+            android:layout_marginRight="5dp"
+            android:textSize="@dimen/text_content"
+        />
+        <TextView
+            android:id="@+id/tv_game_treasure_gd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="..."
+            android:textSize="@dimen/text_content"
+        />
+        </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_game_treasure_content"
+        android:id="@+id/tv_game_treasure_dayrecords"
+        android:background="@color/colorwhite"
+        android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:textSize="@dimen/text_content"
+        android:layout_weight="1"
+        android:text="30天收益记录"
+        android:textColor="@android:color/black"
+        android:background="@color/colorwhite"
+        android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:textSize="@dimen/text_content"
+            android:text="分红(贝母)"
+            android:textColor="@android:color/black"
+            android:background="@color/colorwhite"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+
+    <com.gd.guandou.guandou.xListview.XListView
+        android:id="@+id/xlv_game_treasure_xlist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:layout_marginBottom="50dp"
+        android:layout_below="@+id/tv_game_treasure_dayrecords"
+        />
+
+
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_game_treasure_out"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorwhite"
+            android:text="转出"
+            android:onClick="onClick"
+            android:textColor="@color/colorblue"
+            android:textSize="20sp"/>
+
+
+        <Button
+            android:id="@+id/btn_game_treasure_in"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorblue"
+            android:layout_weight="1"
+            android:text="转入"
+            android:onClick="onClick"
+            android:textColor="@color/colorwhite"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+        android:background="@color/colorGrey" android:id="@+id/view"/>
+
+
+</RelativeLayout>

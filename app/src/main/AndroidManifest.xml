@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.gd.guandou.guandou">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="com.google.android.apps.photos.permission.GOOGLE_PHOTOS"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <!-- zxing -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.FLASHLIGHT"/>
+
+    <uses-feature android:name="android.hardware.camera"/>
+    <uses-feature android:name="android.hardware.camera.autofocus"/>
+
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <application
+        android:name=".Application.MainApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/logow"
+        android:label="@string/app_name_GD"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity android:name=".activity.StartPageActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+
+                <data
+                    android:host="startPage"
+                    android:scheme="gd"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.MainActivity">
+        </activity>
+        <activity android:name=".activity.ShouYeActivity">
+        </activity>
+        <activity android:name=".activity.MyWealthActivity">
+        </activity>
+        <activity android:name=".activity.GameFarmActivity">
+        </activity>
+        <activity android:name=".activity.GameTreasureActivity">
+        </activity>
+        <activity android:name=".activity.ValueIndexActivity">
+        </activity>
+        <activity android:name=".activity.RegActivity">
+        </activity>
+        <activity android:name=".activity.LoginActivity">
+        </activity>
+        <activity android:name=".activity.PurchaseHistoryActivity">
+        </activity>
+        <activity android:name=".activity.PaymentSettingActivity">
+        </activity>
+        <activity android:name=".activity.GameTreasureDetailActivity">
+        </activity>
+        <activity android:name=".activity.TotalAssetsActivity">
+        </activity>
+        <activity android:name=".activity.HeadPictureActivity">
+        </activity>
+        <activity android:name=".activity.ScanFoodSInfoActivity">
+        </activity>
+        <activity
+            android:name=".zxinglibrary.android.CaptureActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:name=".activity.FoggetActivity">
+        </activity>
+    </application>
+
+</manifest>
