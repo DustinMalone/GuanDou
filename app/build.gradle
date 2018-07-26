@@ -7,8 +7,8 @@ android {
         applicationId "com.gd.guandou.guandouZ"
         minSdkVersion 19
         targetSdkVersion 25
-        versionCode 15
-        versionName "1.15"
+        versionCode 16
+        versionName "1.16"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 //        multiDexEnabled true
     }
@@ -41,4 +41,5 @@ dependencies {
     compile 'com.kaopiz:kprogresshud:1.1.0'
     compile 'com.bigkoo:alertview:1.0.3'
     compile 'com.orhanobut:logger:2.1.1'
+    compile 'com.pgyersdk:sdk:2.8.1'
 }

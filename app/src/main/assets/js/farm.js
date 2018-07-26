@@ -15,6 +15,7 @@ $(function() {
 		get_land_count();
 		var land_price = parseInt(land_info[0].data.landPrice); //土地单价
 		var seed_price = parseInt(land_info[0].data.seedsPrice); //种子单价
+	        var zt2 = parseInt(land_info[0].data.zt2);
 		var beimu = 0;
 		function testPsw(callback) {
 			var token = {
@@ -109,7 +110,6 @@ $(function() {
 			contentType: "application/json",
 			success: function(result) {
 				if(result.success) {
-					console.log(result)
 					$(".residue").text(result.data.gdnumber);
 
 				}
@@ -149,13 +149,12 @@ $(function() {
 			data: JSON.stringify(queryLandInfo),
 			contentType: "application/json",
 			success: function(result) {
-				console.log(result)
 				$(".field").attr("dn", result.data.zt0); //可开垦数量
 				$(".field").attr("jg", result.data.landPrice); //土地价格
 				$(".field").attr("zzjg", result.data.seedsPrice); //土地价格
 
-					$(".field").attr("dn", result.data.zt0);
-	
+				$(".field").attr("dn", result.data.zt0);
+
 				set_land();
 			},
 			error: function() {
@@ -175,9 +174,9 @@ $(function() {
 			data: JSON.stringify(queryLand),
 			contentType: "application/json",
 			success: function(result) {
-				console.log(result)
 				var landStatus = result.data;
 				if(!$.isEmptyObject(landStatus)) {
+					console.log(result)
 					$(".loading").hide();
 					$(".field li").each(function(index, dou) {
 						var that = $(this);
@@ -215,11 +214,13 @@ $(function() {
 					})
 				} else {
 					$(".loading").hide();
+					$(".field").attr("dn", "12");
 					//buy_land();
 				}
 			},
 			error: function() {
 				mui.toast("网络错误，请稍后再重试");
+
 			}
 		})
 	}
@@ -236,21 +237,18 @@ $(function() {
 				clearInterval(time);
 				if($(this).find(".time-tip").length == 0 && lanStatus != 1 && lanStatus <= 3) {
 					$(this).append("<div class='time-tip'><p class='tx'></p><p class='t'></p></div>");
-					setInterval(function() {
-						that.find(".time-tip").remove();
-					}, 4000)
 				}
 			}
 			if(lanStatus == 0 || !lanStatus) { //未开垦弹出消息框是否购买
 				$(this).addClass("buy");
 				setTimeout(function() {
 					buy_land();
-				}, 700)
+				}, 300)
 			} else if(lanStatus == 1) { //已经开垦 弹窗提示是否购买种子
 				setTimeout(function() {
 					buy_seed();
 					$(".time-tip").text("待耕种")
-				}, 700)
+				}, 300)
 			} else if(lanStatus == 2) {
 				var time = setInterval(function(nt, rt) {
 					nt = (new Date()).getTime(); //现在时间
@@ -270,11 +268,18 @@ $(function() {
 			} else if(lanStatus == 3) {
 				var timeFd = setInterval(function(nt, rt) {
 					nt = (new Date()).getTime(); //现在时间
-					rt = (new Date(that.attr("FD"))).getTime() //成熟时间
+					rt = (new Date(that.attr("fd"))).getTime() //成熟时间
+					if(/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+						var x = that.attr("fd");
+						rt = (new Date(x.replace(/-/g, "/"))).getTime()
+					}
 					that.attr("djss", parseInt(rt * 0.001) - parseInt(nt * 0.001));
 					if(that.hasClass("on")) {
 						if(that.attr("djss") <= 0) {
-							$(".t").text("贯豆已长豆~");
+							$(".t").text("贯豆已长豆~").css({
+								"line-height": "3.2",
+								"font-size": "14px"
+							});
 							that.removeAttr("djss");
 							clearInterval(timeFd);
 						} else {
@@ -284,8 +289,11 @@ $(function() {
 					}
 				}, 1000)
 			} else {
-				//					$(".tx").text("可成熟").css({"line-height":"3.2","font-size":"14px"});
-				//					$(".time-tip .t").remove()
+				$(".tx").text("贯豆已成熟～").css({
+					"line-height": "3.2",
+					"font-size": "14px"
+				});
+				$(".time-tip .t").remove()
 			}
 
 		})
@@ -473,7 +481,7 @@ $(function() {
 			'请输入支付密码', '购买种子', ['取消', '确定'], null, 'div');
 		//	'购买土地和种子的数量(默认为1)', '购买土地-单价'+parseInt($(".field").attr("jg")) +"贝母", ['取消', '确定'], null, 'div');
 		document.querySelector('.mui-popup-input input').type = 'password';
-		$('.mui-popup-in input').addClass(".paypsw");
+		$('.mui-popup-in input').addClass("paypsw");
 		$(".paypsw").focus();
 		mui(".mui-popup-buttons").on("tap", ".mui-popup-button:nth-child(2)", function() {
 			testPsw(function(test) {
@@ -503,16 +511,15 @@ $(function() {
 					})
 				}
 			});
-
 		})
 	}
 	//待开发功能提示
 	$("#gameSpeed,#gameShop").click(function() {
-		mui.toast("功能即将启用！")
+		mui.toast("功能即将启用！");
 	});
 	$(".farm-foot .go_steal").click(function() {
-		if($(".field").attr("dn") == 12) {
-			mui.toast("开垦土地后才能逛农场～");
+		if($(".field").attr("dn") == 12 || zt2 == 0) {
+			mui.toast("您还没有购买土地或种植贯豆");
 		} else {
 			$(this).attr("href", "get_farm.html");
 		}

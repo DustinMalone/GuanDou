@@ -10,6 +10,7 @@ import android.util.Log;
 import com.gd.guandou.guandou.R;
 import com.gd.guandou.guandou.content.Content;
 import com.gd.guandou.guandou.untils.SharedPreferencesUtil;
+import com.gd.guandou.guandou.zxinglibrary.common.Constant;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,6 +34,7 @@ public class StartPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_page);
         context=this;
+        SharedPreferencesUtil.putString(context, Content.isShowUpdate,"");
         it = new Intent(this, MainActivity.class); //你要转向的Activity
          timer = new Timer();
          task = new TimerTask() {

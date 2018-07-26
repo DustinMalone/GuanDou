@@ -13,7 +13,7 @@ public class Content {
     public static String QRCodeRusult="QRCodeRusult";//二维码扫描结果标识
 
     //贯豆测试接口域名
-//    public static String GDAPI="http://gzpandie.mynetgear.com:81/";
+//    public static String GDAPI="http://119.23.208.144:8080/";
 
     //贯豆正式接口域名
 //    public static String GDAPI="http://139.224.229.110:8088/";
@@ -27,6 +27,8 @@ public class Content {
 
     public static String filename= SDCardUtils.getSDCardPath()+ Content.photoFileName;
 
+    //是否显示更新
+    public final static String isShowUpdate="isShowUpdate";
 
     /**
      * 贯豆接口地址
@@ -128,6 +130,9 @@ public class Content {
 
     //重置密码
     public static String resetpassword="GuanDou/api/user/forgot/gdresetpassword.do";
+
+    //更新版本
+    public static String updateVersion="GuanDou/gameService/queryAppVersion.do";
 
 
 

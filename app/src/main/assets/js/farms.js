@@ -8,7 +8,7 @@ $(function() {
 		var  userList =  JSON.parse(localStorage.getItem("steal"));
 		var next = 1;
 		get_gd();
-		console.log(userList);
+	
 		function get_gd(){
 			var token = {
 				"accessToken": user_tk
@@ -43,14 +43,17 @@ $(function() {
 			mui.toast("没有更多土地了");
 			return false;
 		} else {
-			$(".loading").show();
 			$(".field .ok").remove();
+			$(".loading").show();
+			$(".time-tip").remove();
 			setTimeout(function() {
+				nextEmpty();
 				$(".get_id").text(userList[next].USERID);
 				set_land(userList[next].USERID);
 				$("#Timetxt").text("未选择土地");
 				next++;
 			}, 700);
+
 			$(".gplus").removeAttr("disabled");
 		}
 	});
@@ -66,7 +69,7 @@ $(function() {
 		clearInterval(timeFd);
 		clearInterval(time);
 		$(".field li").empty();
-		$(".field li").removeAttr("id STATUS JS SF RD FD djss djs")
+		$(".field li").removeAttr("js sf");
 		$(".field li").attr("class", "land");
 		$(".field li").append("<img src='../images/di.png' class='max' />");
 		$(".field li").append("<img src='../images/un.png' class='status' />");
@@ -77,7 +80,6 @@ $(function() {
 		var queryLand = {
 			"ownerId": id
 		};
-		//	console.log(queryLand);
 		$.ajax({
 			url: "http://120.79.55.141/GuanDou/gameService/queryLand.do",
 			type: "POST",
@@ -148,7 +150,6 @@ $(function() {
 				if($(this).find(".time-tip").length == 0 && lanStatus != 4) {
 					$(this).append("<div class='time-tip'><p class='tx'></p><p class='t'></p></div>").siblings().find(".time-tip").remove();
 				}
-
 			}
 			if(lanStatus == 2) {
 				time = setInterval(function(nt, rt) {
@@ -168,11 +169,15 @@ $(function() {
 			} else if(lanStatus == 3) {
 				timeFd = setInterval(function(nt, rt) {
 					nt = (new Date()).getTime(); //现在时间
-					rt = (new Date(that.attr("FD"))).getTime() //成熟时间
+					rt = (new Date(that.attr("fd"))).getTime() //成熟时间
+					if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)){
+						var x = that.attr("fd");
+						rt = (new Date(x.replace(/-/g,"/"))).getTime()
+					}
 					that.attr("djss", parseInt(rt * 0.001) - parseInt(nt * 0.001));
 					if(that.hasClass("on")) {
 						if(that.attr("djss") <= 0) {
-							$(".time-tip .tx").text("贯豆已长豆~");
+							$(".time-tip .tx").text("贯豆已长豆~").css({"line-height":"3.2","font-size":"14px"});
 							that.removeAttr("djss");
 							clearInterval(timeFd);
 						} else {

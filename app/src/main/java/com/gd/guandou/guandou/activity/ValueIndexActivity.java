@@ -513,8 +513,8 @@ public class ValueIndexActivity extends AppCompatActivity implements View.OnClic
                                 public void onClick(View v) {
                                     if (v.getId()==R.id.btn_hint_yes){
 
-                                        if (Double.parseDouble(AutoDialogUtil.getEditTextValue())==0){
-                                            T.show(v.getContext(),"请输入正确的数字",1000);
+                                        if (Double.parseDouble(AutoDialogUtil.getEditTextValue())<1){
+                                            T.show(v.getContext(),"输入数值必须大于等于1",1000);
                                             return;
                                         }
 //                            Toast.makeText(ValueIndexActivity.this,AutoDialogUtil.getEditTextValue(),Toast.LENGTH_SHORT).show();

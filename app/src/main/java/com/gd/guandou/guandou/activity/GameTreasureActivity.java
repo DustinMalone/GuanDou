@@ -473,11 +473,11 @@ public class GameTreasureActivity extends AppCompatActivity implements View.OnCl
 
                                     @Override
                                     public void onClick(View v) {
-                                        if (Double.parseDouble(AutoDialogUtil.getEditTextValue()) <= Double.parseDouble(GDnum)) {
+                                        if (Double.parseDouble(AutoDialogUtil.getEditTextValue())>=1&&Double.parseDouble(AutoDialogUtil.getEditTextValue()) <= Double.parseDouble(GDnum)) {
 //                            changeOrTurnGD(0, AutoDialogUtil.getEditTextValue());
                                             exchange(0, AutoDialogUtil.getEditTextValue());
                                         } else {
-                                            T.cshow(context, "贯豆不足", 1000);
+                                            T.cshow(context, "贯豆不足或转入贯豆数量必须大于等于1", 1000);
                                         }
                                     }
                                 });
@@ -492,11 +492,11 @@ public class GameTreasureActivity extends AppCompatActivity implements View.OnCl
                                             T.cshow(context,"服务繁忙",1000);
                                             return;
                                         }
-                                        if (Double.parseDouble(AutoDialogUtil.getEditTextValue())<=Double.parseDouble(tv_game_treasure_gd.getText().toString())) {
+                                        if (Double.parseDouble(AutoDialogUtil.getEditTextValue())>=1&&Double.parseDouble(AutoDialogUtil.getEditTextValue())<=Double.parseDouble(tv_game_treasure_gd.getText().toString())) {
 //                            changeOrTurnGD(1,AutoDialogUtil.getEditTextValue());
                                             exchange(1,AutoDialogUtil.getEditTextValue());
                                         }else {
-                                            T.cshow(context,"贯豆不足",1000);
+                                            T.cshow(context,"贯豆不足或转出贯豆数量必须大于等于1",1000);
                                         }
                                     }
                                 });

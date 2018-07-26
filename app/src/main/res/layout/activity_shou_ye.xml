@@ -147,7 +147,7 @@
               android:layout_marginLeft="10dp"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:text="账户余额"
+              android:text="我的资产"
               android:textSize="@dimen/text_content"
               android:textColor="@android:color/black"/>
 
@@ -273,28 +273,29 @@
                     android:textColor="@android:color/black"/>
             </LinearLayout>
 
-            <LinearLayout
 
+
+            <LinearLayout
+                android:id="@+id/ll_sy_recharge"
+                android:clickable="true"
+                android:onClick="onClick"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:id="@+id/ll_sy_payment"
-                android:clickable="true"
-                android:onClick="onClick"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:scaleType="fitXY"
-                    android:src="@mipmap/tool02"/>
+                    android:src="@mipmap/tool04"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="支付"
-                    android:textSize="@dimen/text_content_small"
+                    android:text="充值"
+                    android:textSize="@dimen/text_content"
                     android:textColor="@android:color/black"/>
             </LinearLayout>
 
@@ -323,30 +324,37 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ll_sy_recharge"
-                android:clickable="true"
-                android:onClick="onClick"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
+                android:id="@+id/ll_sy_payment"
+                android:clickable="true"
+                android:onClick="onClick"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:scaleType="fitXY"
-                    android:src="@mipmap/tool04"/>
+                    android:src="@mipmap/tool02"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="充值"
-                    android:textSize="@dimen/text_content"
+                    android:text="支付"
+                    android:textSize="@dimen/text_content_small"
                     android:textColor="@android:color/black"/>
             </LinearLayout>
 
         </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:src="@mipmap/shouye_banner"
+            android:scaleType="fitXY"/>
 
         <LinearLayout
             android:layout_marginTop="10dp"

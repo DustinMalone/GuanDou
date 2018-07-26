@@ -1,8 +1,11 @@
 package com.gd.guandou.guandou.activity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -19,10 +22,15 @@ import com.gd.guandou.guandou.untils.ElseUtils;
 import com.gd.guandou.guandou.untils.IntentUtil;
 import com.gd.guandou.guandou.untils.SharedPreferencesUtil;
 import com.gd.guandou.guandou.untils.T;
+import com.gd.guandou.guandou.untils.UpdateVersionUtil;
 import com.gd.guandou.guandou.view.CircleImageView;
 import com.gd.guandou.guandou.zxinglibrary.android.CaptureActivity;
 import com.gd.guandou.guandou.zxinglibrary.bean.ZxingConfig;
 import com.gd.guandou.guandou.zxinglibrary.common.Constant;
+import com.pgyersdk.crash.PgyCrashManager;
+import com.pgyersdk.javabean.AppBean;
+import com.pgyersdk.update.PgyUpdateManager;
+import com.pgyersdk.update.UpdateManagerListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,8 +41,7 @@ import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
-
-
+import java.io.File;
 
 
 @ContentView(R.layout.activity_shou_ye)
@@ -83,6 +90,46 @@ public class ShouYeActivity extends AppCompatActivity implements View.OnClickLis
         //setContentView(R.layout.activity_shou_ye);
         //添加ACTIVITY到栈堆中
         AppManager.getAppManager().addActivity(this);
+
+        PgyUpdateManager.setIsForced(false);
+        if (TextUtils.isEmpty(SharedPreferencesUtil.getString(ShouYeActivity.this,Content.isShowUpdate,""))){
+            PgyUpdateManager.register(ShouYeActivity.this,
+                    new UpdateManagerListener() {
+
+                        @Override
+                        public void onUpdateAvailable(final String result) {
+                            SharedPreferencesUtil.putString(ShouYeActivity.this, Content.isShowUpdate,"yes");
+                            // 将新版本信息封装到AppBean中
+                            final AppBean appBean = getAppBeanFromString(result);
+                            new AlertDialog.Builder(ShouYeActivity.this)
+                                    .setTitle("是否下载更新最新版")
+                                    .setMessage("")
+                                    .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+
+                                        }
+                                    })
+                                    .setPositiveButton(
+                                            "确定",
+                                            new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(
+                                                        DialogInterface dialog,
+                                                        int which) {
+                                                    startDownloadTask(
+                                                            ShouYeActivity.this,
+                                                            appBean.getDownloadURL());
+                                                }
+                                            }).show();
+                        }
+
+                        @Override
+                        public void onNoUpdateAvailable() {
+                        }
+                    });
+        }
+
         init();
     }
 
@@ -98,6 +145,7 @@ public class ShouYeActivity extends AppCompatActivity implements View.OnClickLis
        getUserPoints();
         getbeansInfo();
         getHeadPicture();
+//        checkUpdateVersion();
     }
 
     //获取用户信息
@@ -331,6 +379,73 @@ public class ShouYeActivity extends AppCompatActivity implements View.OnClickLis
         });
     }
 
+
+    //更新版本
+    private void checkUpdateVersion() {
+        UpdateVersionUtil.proDialogShow(ShouYeActivity.this, "正在检查更新...");
+        RequestParams params = new RequestParams(Content.GDAPI+Content.updateVersion);
+        params.setAsJsonContent(true);
+        params.addHeader("Content-Type","application/json");
+        params.addHeader("charset","utf-8");
+        x.http().post(params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+
+                try {
+                    JSONObject jobject = new JSONObject(result);
+                    if (jobject.get("code").toString().equals("0")){
+
+                       JSONObject data=jobject.getJSONObject("data");
+                       String appure=data.getString("APPHERF");
+                       String verionName=data.getString("VERSION");
+
+                        File file = new File(Environment
+                                .getExternalStorageDirectory().getPath() + File.separator+"GDDownLoad"
+                                + File.separator+"gd_" + verionName + ".apk");
+
+                        if (!file.exists()){
+                            UpdateVersionUtil.setUpDialog(ShouYeActivity.this,verionName,appure,"是否下载?");
+
+                        }
+
+
+                    }else{
+                        Toast.makeText(ShouYeActivity.this,jobject.get("message").toString(),Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    Toast.makeText(ShouYeActivity.this,"检查版本更新错误!",Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+                if (ex instanceof HttpException) { // 网络错误
+                    HttpException httpEx = (HttpException) ex;
+                    int responseCode = httpEx.getCode();
+                    String responseMsg = httpEx.getMessage();
+                    String errorResult = httpEx.getResult();
+                    // ...
+                    Toast.makeText(x.app(), "网络异常"+ex.getMessage(), Toast.LENGTH_LONG).show();
+
+                } else { // 其他错误
+                    // ...
+                    Toast.makeText(x.app(), "服务繁忙", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+
+            }
+
+            @Override
+            public void onFinished() {
+                UpdateVersionUtil.proDialogHide();
+            }
+        });
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -451,5 +566,12 @@ public class ShouYeActivity extends AppCompatActivity implements View.OnClickLis
     protected void onRestart() {
         super.onRestart();
         init();
+    }
+
+    @Override
+    protected void onDestroy() {
+        PgyCrashManager.unregister();
+        super.onDestroy();
+
     }
 }
